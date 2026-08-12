@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const ADMIN_API = "http://localhost:8080/admin";
+const ADMIN_API = "https://enterprise-resourse-planning-erp-x4n9.onrender.com/admin";
 
 /* ══════════════════════════════════════════════════════════════════
    STYLES
