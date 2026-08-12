@@ -9,7 +9,7 @@ import org.example.erp.Entity.Faculty;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "https://enterprise-resourse-planning-erp.onrender.com")
 @RestController
 @RequestMapping("/lecture")
 public class LectureController {
