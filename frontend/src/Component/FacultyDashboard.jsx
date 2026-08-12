@@ -2,9 +2,9 @@ import { useState, useEffect, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 /* ── API base URLs ─────────────────────────────────────────────── */
-const FACULTY_API = "http://localhost:8080/faculty";
-const LECTURE_API = "http://localhost:8080/lecture";
-const STUDENT_API = "http://localhost:8080/student";
+const FACULTY_API = "https://enterprise-resourse-planning-erp-x4n9.onrender.com/faculty";
+const LECTURE_API = "https://enterprise-resourse-planning-erp-x4n9.onrender.com/lecture";
+const STUDENT_API = "https://enterprise-resourse-planning-erp-x4n9.onrender.com/student";
 
 /*
   Spring Boot endpoints used:
