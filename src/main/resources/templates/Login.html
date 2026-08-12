@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+
+    <style>
+        /* Page background and layout */
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, #74ABE2, #5563DE);
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Login container */
+        .login {
+            background: #fff;
+            padding: 40px 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            display: grid;
+            gap: 10px;
+            width: 320px;
+            text-align: center;
+        }
+
+        /* Heading */
+        .login h2 {
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+
+        /* Input fields */
+        input[type="text"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+            transition: 0.3s;
+            background-color: #fff;
+            color: #333;
+        }
+
+        /* Focus effect for inputs and select */
+        input[type="text"]:focus,
+        input[type="password"]:focus,
+        select:focus {
+            border-color: #5563DE;
+            outline: none;
+            box-shadow: 0 0 5px #5563DE;
+        }
+
+        /* Label styling */
+        label {
+            display: block;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 3px;
+        }
+
+        /* Button container */
+        .btn-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        /* Buttons */
+        input[type="submit"],
+        input[type="reset"] {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        input[type="submit"] {
+            background: #5563DE;
+            color: #fff;
+        }
+
+        input[type="submit"]:hover {
+            background: #3d4fc1;
+        }
+
+        input[type="reset"] {
+            background: #ccc;
+        }
+
+        input[type="reset"]:hover {
+            background: #aaa;
+        }
+
+        /* Text and link styling */
+        .login p {
+            margin: 5px 0 0 0;
+            color: #333;
+            font-size: 14px;
+        }
+
+        a {
+            color: #5563DE;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="login">
+    <h2>Login</h2>
+    <form onsubmit="login(event)">
+
+        <label for="loginType">Select Login Type</label>
+        <select name="loginType"  required>
+            <option value="" disabled selected hidden>Select</option>
+            <option>Admin</option>
+            <option>Faculty Member</option>
+            <option>Student</option>
+        </select>
+
+        <input type="text" placeholder="Email ID / Phone No" name="uname" required>
+        <input type="password" placeholder="Password" name="upass" required>
+
+        <div class="btn-row">
+            <input type="submit" value="Login">
+            <input type="reset" value="Clear">
+        </div>
+
+    </form>
+    <p>Don't have an account?<br>
+        <a href="Register.html">Go to Register</a></p>
+</div>
+<script>
+    function login(event) {
+        event.preventDefault(); // prevent page reload
+
+        let email = document.querySelector('input[name="uname"]').value;
+        let password = document.querySelector('input[name="upass"]').value;
+
+        fetch("http://localhost:8080/faculty/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: email,
+                password: password
+            })
+        })
+        .then(res => res.text())
+        .then(data => {
+            alert(data); // show result
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Error connecting to server");
+        });
+    }
+</script>
+</body>
+</html>

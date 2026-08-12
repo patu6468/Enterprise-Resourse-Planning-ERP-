@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Form</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Poppins", sans-serif;
+            background: linear-gradient(135deg, #74ABE2, #5563DE);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .register {
+            background: #fff;
+            width: 480px;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+        }
+
+        .register h1 {
+            text-align: center;
+            color: #3d4fc1;
+            margin-bottom: 25px;
+        }
+
+        fieldset {
+            border: 2px solid #3d4fc1;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            background: #f8f9ff;
+        }
+
+        legend {
+            font-weight: bold;
+            color: #3d4fc1;
+        }
+
+        label {
+            display: inline-block;
+            width: 150px;
+            margin-bottom: 10px;
+        }
+
+        input, select {
+            width: 60%;
+            padding: 8px;
+            margin-bottom: 5px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        /* Error styles */
+        .error {
+            color: red;
+            font-size: 13px;
+            margin-left: 150px;
+            display: block;
+        }
+
+        .error-input {
+            border: 1px solid red;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background: #5563DE;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+        }
+    </style>
+
+    <script>
+        function setError(id, msg) {
+            document.getElementById(id).innerText = msg;
+        }
+
+        function clearErrors() {
+            let errors = document.getElementsByClassName("error");
+            for (let i = 0; i < errors.length; i++) {
+                errors[i].innerText = "";
+            }
+
+            let inputs = document.querySelectorAll("input, select");
+            inputs.forEach(el => el.classList.remove("error-input"));
+        }
+
+        function validateForm() {
+            clearErrors();
+            let valid = true;
+
+            let f = document.forms["regForm"];
+
+            // Personal
+            let name = f["uname"];
+            let email = f["email"];
+            let mobile = f["mobile"];
+            let gender = f["gender"];
+            let program = f["program"];
+            let caste = f["caste"];
+            let password = f["pass"];
+
+            // Address
+            let city = f["city"];
+            let pin = f["pin"];
+            let state = f["state"];
+            let dist = f["dist"];
+            let subdist = f["subdist"];
+
+            // Qualification
+            let marks = f["qualiMark"];
+
+            // Name
+            if (name.value.trim().length < 3) {
+                setError("nameErr", "Min 3 characters");
+                name.classList.add("error-input");
+                valid = false;
+            }
+
+            // Email
+            if (!/^[^ ]+@[^ ]+\.[a-z]{2,3}$/.test(email.value)) {
+                setError("emailErr", "Invalid email");
+                email.classList.add("error-input");
+                valid = false;
+            }
+
+            // Mobile
+            if (!/^[0-9]{10}$/.test(mobile.value)) {
+                setError("mobileErr", "Enter 10 digit number");
+                mobile.classList.add("error-input");
+                valid = false;
+            }
+
+            // Dropdowns
+            if (gender.value === "select") {
+                setError("genderErr", "Select gender");
+                gender.classList.add("error-input");
+                valid = false;
+            }
+
+            if (program.value === "select") {
+                setError("programErr", "Select program");
+                program.classList.add("error-input");
+                valid = false;
+            }
+
+            if (caste.value === "select") {
+                setError("casteErr", "Select caste");
+                caste.classList.add("error-input");
+                valid = false;
+            }
+
+            // Password
+            if (password.value.length < 6) {
+                setError("passErr", "Min 6 characters");
+                password.classList.add("error-input");
+                valid = false;
+            }
+
+            // Address validation
+            if (city.value.trim() === "") {
+                setError("cityErr", "City required");
+                city.classList.add("error-input");
+                valid = false;
+            }
+
+            if (!/^[0-9]{6}$/.test(pin.value)) {
+                setError("pinErr", "6 digit pin");
+                pin.classList.add("error-input");
+                valid = false;
+            }
+
+            if (state.value.trim() === "") {
+                setError("stateErr", "State required");
+                state.classList.add("error-input");
+                valid = false;
+            }
+
+            if (dist.value.trim() === "") {
+                setError("distErr", "District required");
+                dist.classList.add("error-input");
+                valid = false;
+            }
+
+            if (subdist.value.trim() !== "" && !/^[A-Za-z ]+$/.test(subdist.value)) {
+                setError("subdistErr", "Only letters");
+                subdist.classList.add("error-input");
+                valid = false;
+            }
+
+            // Marks
+            if (marks.value && (marks.value < 0 || marks.value > 100)) {
+                setError("marksErr", "0-100 only");
+                marks.classList.add("error-input");
+                valid = false;
+            }
+
+            return valid;
+        }
+    </script>
+
+</head>
+
+<body>
+
+<div class="register">
+    <h1>Registration</h1>
+
+    <form name="regForm"  method="post" action="http://localhost:8080/student/add" >
+
+        <fieldset>
+            <legend>Personal Details</legend>
+
+            <label>Name:</label>
+            <input type="text" name="name">
+            <span id="nameErr" class="error"></span>
+
+            <label>Email:</label>
+            <input type="text" name="email">
+            <span id="emailErr" class="error"></span>
+
+            <label>Mobile:</label>
+            <input type="text" name="mobile">
+            <span id="mobileErr" class="error"></span>
+
+            <label>Gender:</label>
+            <select name="gender">
+                <option value="select">select</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+            <span id="genderErr" class="error"></span>
+
+            <label>Program:</label>
+            <select name="program">
+                <option value="select">select</option>
+                <option>MCA</option>
+                <option>MBA</option>
+                <option>B.VOC (SD)</option>
+                <option>B.VOC (BFSI)</option>
+            </select>
+            <span id="programErr" class="error"></span>
+
+            <label>Caste:</label>
+            <select name="caste">
+                <option value="select">select</option>
+                <option>MARATHA-KUNBI</option>
+                <option>OBC</option>
+                <option>SC</option>
+                <option>ST</option>
+                <option>MUSLIM</option>
+            </select>
+            <span id="casteErr" class="error"></span>
+
+            <label>Password:</label>
+            <input type="password" name="password">
+            <span id="passErr" class="error"></span>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Address Details</legend>
+
+            <label>City:</label>
+            <input type="text" name="city">
+            <span id="cityErr" class="error"></span>
+
+            <label>Pin Code:</label>
+            <input type="text" name="pin_code">
+            <span id="pinErr" class="error"></span>
+
+            <label>State:</label>
+            <input type="text" name="state">
+            <span id="stateErr" class="error"></span>
+
+            <label>District:</label>
+            <input type="text" name="district">
+            <span id="distErr" class="error"></span>
+
+            <label>Sub District:</label>
+            <input type="text" name="sub_district">
+            <span id="subdistErr" class="error"></span>
+
+        </fieldset>
+
+        <fieldset>
+            <legend>Past Qualification Details</legend>
+
+            <label>Previous Qualification:</label>
+            <input type="text" name="qualification">
+
+            <label>Mark Obtain:</label>
+            <input type="number" name="qualiMark">
+            <span id="marksErr" class="error"></span>
+
+        </fieldset>
+
+        <input type="submit" value="Submit">
+
+
+        <p style="text-align:center; margin-top:15px;">
+            Already have an account?<br>
+            <a href="Login.html" style="color:#5563DE; font-weight:bold;">
+                Go to Login
+            </a>
+        </p>
+
+    </form>
+</div>
+
+</body>
+</html>
