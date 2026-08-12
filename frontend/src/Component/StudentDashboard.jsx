@@ -148,6 +148,230 @@ const styles = `
   .search-input{padding:8px 10px 8px 34px;background:rgba(109,191,109,.05);border:1px solid var(--border);border-radius:4px;color:var(--cream);font-family:'DM Sans',sans-serif;font-size:13px;outline:none;width:100%;transition:border-color .2s}
   .search-input::placeholder{color:var(--muted)}
   .search-input:focus{border-color:var(--accent)}
+
+  /* =========================
+   RESPONSIVE DESIGN
+   ========================= */
+
+@media (max-width: 900px) {
+
+  .sidebar {
+    width: 200px;
+  }
+
+  .topbar {
+    padding: 18px 20px;
+  }
+
+  .content {
+    padding: 20px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-card.full {
+    grid-column: auto;
+  }
+
+  .profile-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 600px) {
+
+  .dash {
+    display: block;
+  }
+
+  /* Sidebar becomes top navigation */
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 12px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brand {
+    padding: 0 16px 12px;
+  }
+
+  .nav {
+    display: flex;
+    overflow-x: auto;
+    padding: 8px 12px;
+    gap: 6px;
+  }
+
+  .nav-item {
+    width: auto;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .logout-btn {
+    margin: 8px 12px 0;
+  }
+
+  /* Main */
+  .main {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .topbar {
+    padding: 14px 16px;
+  }
+
+  .page-title {
+    font-size: 18px;
+  }
+
+  .user-email {
+    display: none;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .content {
+    padding: 16px;
+  }
+
+  /* Welcome */
+  .welcome-banner {
+    padding: 16px;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .wb-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .wb-title {
+    font-size: 17px;
+  }
+
+  .wb-sub {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  /* Stats */
+  .stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .stat-card {
+    padding: 14px 12px;
+  }
+
+  .stat-value {
+    font-size: 21px;
+  }
+
+  /* Sections */
+  .section-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .section-card {
+    padding: 16px;
+  }
+
+  /* Profile */
+  .profile-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-card {
+    padding: 16px;
+  }
+
+  /* Lecture cards */
+  .lec-card {
+    grid-template-columns: auto 1fr;
+    gap: 10px;
+  }
+
+  .lec-card > .badge {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .lec-meta {
+    gap: 7px;
+  }
+
+  .lec-meta-item {
+    font-size: 11px;
+  }
+
+  .lec-subject {
+    font-size: 13px;
+  }
+
+  /* Search */
+  .search-input {
+    font-size: 12px;
+  }
+
+  /* Filters */
+  .filters {
+    display: flex;
+    overflow-x: auto;
+    gap: 6px;
+    padding-bottom: 4px;
+  }
+
+  .filter-btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+}
+
+
+@media (max-width: 400px) {
+
+  .content {
+    padding: 12px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-banner {
+    padding: 14px;
+  }
+
+  .section-card {
+    padding: 14px;
+  }
+
+  .lec-card {
+    padding: 11px;
+  }
+
+  .lec-date-col {
+    min-width: 42px;
+  }
+}
 `;
 
 /* ── Nav ────────────────────────────────────────────────────────── */
