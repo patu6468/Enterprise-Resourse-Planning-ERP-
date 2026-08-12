@@ -159,14 +159,14 @@ export default function LoginPage() {
     const cfg = ROLES[role];
 
     try {
-      const url = `http://localhost:8080/${cfg.apiPath}/login/${encodeURIComponent(email)}/${encodeURIComponent(password)}`;
+      const url = `https://enterprise-resourse-planning-erp-x4n9.onrender.com/${cfg.apiPath}/login/${encodeURIComponent(email)}/${encodeURIComponent(password)}`;
 
       let res;
       try {
         res = await fetch(url, { method: "GET" });
       } catch {
         // Pure network failure — server down or CORS not configured
-        setApiError("Cannot connect to server (port 8080). Is Spring Boot running?");
+        setApiError("Opps....Internal Server Error!!!");
         setLoading(false);
         return;
       }
