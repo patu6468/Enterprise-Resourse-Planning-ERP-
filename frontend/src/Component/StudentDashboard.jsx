@@ -2,8 +2,8 @@ import { useState, useEffect, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 /* ── API ───────────────────────────────────────────────────────── */
-const STUDENT_API = "http://localhost:8080/student";
-const LECTURE_API = "http://localhost:8080/lecture";
+const STUDENT_API = "https://enterprise-resourse-planning-erp-x4n9.onrender.com/student";
+const LECTURE_API = "https://enterprise-resourse-planning-erp-x4n9.onrender.com/lecture";
 
 /*
   Spring Boot endpoints used:
