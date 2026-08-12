@@ -149,6 +149,310 @@ const styles = `
   .confirm-title{font-family:'Playfair Display',serif;font-size:18px;color:var(--cream);margin-bottom:8px}
   .confirm-sub{font-size:13px;color:var(--muted);margin-bottom:22px;line-height:1.6}
   .confirm-btns{display:flex;gap:10px;justify-content:center}
+
+   /* ================= RESPONSIVE ================= */
+
+@media (max-width: 1100px) {
+  .sidebar {
+    width: 210px;
+  }
+
+  .content {
+    padding: 24px;
+  }
+
+  .topbar {
+    padding: 18px 24px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .search-input {
+    width: 180px;
+  }
+}
+
+
+/* ================= TABLET ================= */
+
+@media (max-width: 768px) {
+
+  .dash {
+    display: block;
+  }
+
+  /* Sidebar becomes horizontal top navigation */
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    padding: 16px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .brand {
+    padding: 0 18px 14px;
+  }
+
+  .nav {
+    display: flex;
+    overflow-x: auto;
+    padding: 12px;
+    gap: 6px;
+  }
+
+  .nav-item {
+    width: auto;
+    min-width: max-content;
+    padding: 9px 12px;
+  }
+
+  .logout-btn {
+    margin: 0 12px;
+  }
+
+  .main {
+    width: 100%;
+    overflow: visible;
+  }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    padding: 16px 18px;
+  }
+
+  .page-title {
+    font-size: 20px;
+  }
+
+  .content {
+    padding: 18px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .section-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-section {
+    padding: 16px;
+  }
+
+  .table-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .toolbar-right {
+    width: 100%;
+  }
+
+  .search-wrap {
+    flex: 1;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .dt-wrap {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 800px;
+  }
+
+  .modal {
+    max-width: 95%;
+  }
+}
+
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 480px) {
+
+  .brand {
+    padding: 0 14px 12px;
+  }
+
+  .brand-name {
+    font-size: 16px;
+  }
+
+  .nav {
+    padding: 10px;
+  }
+
+  .nav-item {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .logout-btn {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+
+  .topbar {
+    padding: 14px;
+  }
+
+  .page-title {
+    font-size: 18px;
+  }
+
+  .user-email {
+    display: none;
+  }
+
+  .avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .content {
+    padding: 12px;
+  }
+
+  .welcome-banner {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .wb-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .wb-title {
+    font-size: 17px;
+  }
+
+  .wb-sub {
+    font-size: 11px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .stat-card {
+    padding: 14px 12px;
+  }
+
+  .stat-label {
+    font-size: 9px;
+  }
+
+  .stat-value {
+    font-size: 21px;
+  }
+
+  .stat-sub {
+    font-size: 10px;
+  }
+
+  .section-card {
+    padding: 16px;
+  }
+
+  .section-title {
+    font-size: 11px;
+  }
+
+  .page-section {
+    padding: 12px;
+  }
+
+  .toolbar-title {
+    font-size: 16px;
+  }
+
+  .toolbar-right {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .toolbar-right > div {
+    width: 100%;
+  }
+
+  .entries-select {
+    flex: 1;
+  }
+
+  .search-wrap {
+    width: 100%;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .pagination {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .page-btns {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-field.full {
+    grid-column: auto;
+  }
+
+  .modal {
+    max-width: 100%;
+    max-height: 95vh;
+  }
+
+  .modal-header {
+    padding: 18px;
+  }
+
+  .modal-body {
+    padding: 18px;
+  }
+
+  .modal-footer {
+    padding: 14px 18px;
+  }
+
+  .confirm-modal {
+    max-width: 95%;
+    padding: 22px;
+  }
+
+  .btn-primary,
+  .btn-ghost,
+  .btn-danger {
+    padding: 8px 14px;
+  }
+}
 `;
 
 /* ── Nav ───────────────────────────────────────────────────────── */
